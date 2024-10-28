@@ -1,12 +1,15 @@
 ---
-title: "My awesome website"
+title: "Jiayi's Columbia website"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-# This is Jiayi's interesting website
+# Welcome! This is my wonderful website
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
-[About Me](about.html)
+![](https://media1.tenor.com/m/nfcHkpstD4cAAAAC/welcome.gif)
+
+Feel feel to browse my website and leave any comments.
+
+## You can find more information about the website owner here: [About Me](about.html) 
