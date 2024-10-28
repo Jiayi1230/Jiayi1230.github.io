@@ -18,7 +18,9 @@ Welcome to connect my Linkedin: [Linkedin](https://www.linkedin.com/in/jiayi-ge-
 
 ### University of Washington | Bachelor of Art & Science
 
-2020–2024 | BS: Economics
+2020–2024 | Seattle, WA
+
+BS: Economics
 
 BA: Food System, Nutrition, and Health
 
@@ -42,7 +44,7 @@ Jun. 2023–Aug. 2023 | Remote
 * Built the Web Application with Flask Framework; achieved interactive functionality that allowed users to test and forecast customized outcomes.
 
 ### iUrbanTeen | Group project leader
-Jan. 2024–June. 2024 | Seattle
+Jan. 2024–June. 2024 | Seattle, WA
 
 * Collaborated with Rainier Community Center to create a STEM-focused hydroponic garden. 
 

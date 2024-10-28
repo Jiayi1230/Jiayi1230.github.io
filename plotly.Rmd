@@ -7,4 +7,14 @@ output:
 ---
 
 # This page have examples about plotly
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(tidyr)
+```
+
+```{r}
+data("instacart")
+```
 
