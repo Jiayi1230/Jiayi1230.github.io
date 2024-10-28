@@ -1,0 +1,89 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+data("ny_noaa")
+
+ny_noaa_sample <- ny_noaa %>%
+  mutate(
+    tmax = as.numeric(tmax) / 10,
+    tmin = as.numeric(tmin) / 10
+  ) %>%
+  filter(
+    !is.na(tmax), !is.na(tmin), !is.na(prcp), !is.na(snow), !is.na(snwd),
+    tmax >= -5 & tmax <= 30,
+    prcp >= 20 & prcp <= 150,    
+    snow >= 0 & snow <= 300,
+    snwd >= 0 & snwd <= 500,
+    year(date) >= 2010         
+  )
+```
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+ny_noaa_sample %>%
+  mutate(label = paste("Tmax:", tmax, "°C", "\nTmin:", tmin, "°C")) %>%
+  plot_ly(
+    x = ~prcp, y = ~snow, type = "scatter", mode = "markers",
+    color = ~tmax, text = ~label, alpha = 0.5
+  ) %>%
+  layout(
+    title = "Precipitation vs. Snowfall with Temperature",
+    xaxis = list(title = "Precipitation (mm)"),
+    yaxis = list(title = "Snowfall (mm)")
+  )
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ny_noaa_sample %>%
+  mutate(month = month(date, label = TRUE)) %>%
+  plot_ly(
+    y = ~tmax, color = ~month, type = "box", colors = "viridis"
+  ) %>%
+  layout(
+    title = "Maximum Temperature by Month",
+    yaxis = list(title = "Max Temperature (°C)")
+  )
+```
+
+### Chart C
+
+```{r}
+ny_noaa_sample %>%
+  count(snwd) %>%
+  filter(n <= 500) %>%
+  plot_ly(
+    x = ~snwd, 
+    y = ~n, 
+    type = "bar",
+    marker = list(color = ~snwd, showscale = TRUE)
+  ) %>%
+  layout(
+    title = "Frequency of Snow Depth",
+    xaxis = list(title = "Snow Depth (mm)"),
+    yaxis = list(title = "Count"),
+    showlegend = FALSE
+  )
+```
+
